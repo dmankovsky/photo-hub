@@ -1,13 +1,11 @@
-// /models/Photo.js
 const mongoose = require("mongoose");
 
 const photoSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  url: { type: String, required: true },   // URL of the uploaded photo
-  clientId: { type: String, required: true }, // Associated client ID
-  uploadedAt: { type: Date, default: Date.now }, // Automatically set upload time
+  url: { type: String, required: true },             // Cloudinary secure_url
+  cloudinaryPublicId: { type: String },              // Cloudinary public_id
+  clientId: { type: String, required: true },
+  uploadedAt: { type: Date, default: Date.now },
 });
 
-const Photo = mongoose.model("Photo", photoSchema);
-
-module.exports = Photo;
+module.exports = mongoose.model("Photo", photoSchema);
